@@ -71,7 +71,7 @@ export function ContributeAnonymouslyForm() {
               Contribute Your Loan Estimate Data Anonymously
             </h4>
             <p className="text-sm md:text-base text-center mb-8">
-              Looking to analyze your mortgage and not get screwed on closing
+              Looking to analyze your mortgage to not get screwed on closing
               costs and bad rates? <br />{" "}
               <Link href="https://closing.wtf" target="_blank">
                 <Button variant={"link"} className="p-0">
@@ -81,7 +81,10 @@ export function ContributeAnonymouslyForm() {
             </p>
             <FileUpload onChange={handleFileUpload} />
             {files.length > 0 && (
-              <RainbowButton onClick={handleSubmit} disabled={isLoading}>
+              <RainbowButton
+                onClick={handleSubmit}
+                disabled={isLoading || files.length === 0}
+              >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
                     <div className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />

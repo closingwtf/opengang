@@ -10,10 +10,6 @@ export async function POST(req: Request) {
   const formData = await req.formData();
   const file = formData.get("pdf") as File;
 
-  console.log(file);
-  const blobUrl = URL.createObjectURL(file);
-  console.log(blobUrl);
-
   const result = await generateObject({
     model: anthropic("claude-3-5-sonnet-20240620"),
     messages: [
@@ -40,10 +36,11 @@ export async function POST(req: Request) {
     output: "object",
     schema: loanEstimateSchema,
   });
+
+  
   const pdf_data = result?.object;
-  // if(pdf_data.loan_summary.purpose.toLowerCase() === "purchase" || pdf_data.loan_summary.purpose.toLowerCase() === "refinance") {
-  //   throw Error("Only Purchase or Refinance is supported")
-  // }
+
+
   const geo_url = `https://api.geocod.io/v1.7/geocode?q=${encodeURIComponent(pdf_data?.loan_summary.property.address)}&fields=census&api_key=${process.env.GEOCOD_IO_API_KEY}`
   
   const geo_response = await fetch(geo_url);

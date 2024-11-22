@@ -22,7 +22,6 @@ export function MetricCards({
   const state_obj = statesList.find((s) => s.name === state);
 
   const stats_in_state = stats.filter((stat) => stat.state === state_obj?.code);
-  console.log({ stats_in_state });
 
   const avg_interest_rate =
     stats_in_state
@@ -38,15 +37,6 @@ export function MetricCards({
     stats_in_state
       .map((stat) => Number(stat.total_closing_costs))
       .reduce((acc, curr) => acc + curr, 0) / stats_in_state.length;
-
-  console.log({ avg_interest_rate });
-  // const getMetrics = () => ({
-  //   interestRate: (6 + Math.random() * 2).toFixed(2),
-  //   downPayment: (15 + Math.random() * 10).toFixed(2),
-  //   closingCosts: (2 + Math.random() * 3).toFixed(2),
-  // });
-
-  // const metrics = getMetrics();
 
   return (
     <div className="grid md:grid-cols-1 gap-4">

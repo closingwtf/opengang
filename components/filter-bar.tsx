@@ -16,7 +16,7 @@ interface FilterBarProps {
   available_states: { name: string; code: string }[];
   stats: Stat[];
   selectedState: string | null;
-  onStateChange: (state: { name: string; code: string }) => void;
+  setSelectedState: (state: string) => void;
   loanType: LoanType;
   onLoanTypeChange: (type: LoanType) => void;
   loanTerm: LoanTerm;
@@ -27,7 +27,7 @@ export function FilterBar({
   available_states,
   stats,
   selectedState,
-  onStateChange,
+  setSelectedState,
   loanType,
   onLoanTypeChange,
   loanTerm,
@@ -41,10 +41,8 @@ export function FilterBar({
           value={selectedState || ""}
           onValueChange={(value) => {
             const state = available_states.find((s) => s.name === value);
-            console.log({ state });
             if (state) {
-              // @ts-expect-error - fix this ts error eventually
-              onStateChange(state.name);
+              setSelectedState(state.name);
             }
           }}
         >

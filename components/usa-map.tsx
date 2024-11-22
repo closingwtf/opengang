@@ -32,7 +32,6 @@ export const USAMap = memo(
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => {
-                console.log({ geo });
                 const isSelected = geo.properties.name === selectedState;
                 const isAvailable = available_states.includes(
                   geo.properties.name

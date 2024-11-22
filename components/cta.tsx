@@ -27,8 +27,8 @@ export const CTA = () => {
               </h2>
               <p className="mt-4 max-w-[26rem] text-center mx-auto  text-base/6 text-neutral-200">
                 <Balancer>
-                  Looking to analyze your mortgage and not get screwed on
-                  closing costs and bad rates?
+                  Looking to analyze your mortgage to not get screwed on closing
+                  costs and bad rates?
                 </Balancer>
               </p>
 
