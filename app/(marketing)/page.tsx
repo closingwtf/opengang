@@ -8,7 +8,6 @@ import { Stat } from "@/lib/schemas";
 
 export default async function Home() {
   const stats = await prisma.stats_mortgage_doc_upload.findMany();
-  console.log("stats", stats);
   return (
     <div className="relative">
       <div className="absolute inset-0 h-full w-full overflow-hidden ">
