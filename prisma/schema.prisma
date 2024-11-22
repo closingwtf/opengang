@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "mongodb"
+  url = env("MONGODB_URL")
+}
+
+model stats_mortgage_doc_upload {
+  id                                  String      @id @map("_id")
+  state                               String?
+  zipcode                             Int?
+  date_issued                         DateTime?
+  interest_rate                       Float?
+  apr                                 Float?
+  points                              Float?
+  sale_price                          Int?
+  downpayment_percentage              Float?
+  loan_term_years                     Int?
+  loan_purpose                        String?
+  loan_type                           String?
+  total_closing_costs                 Int?
+  closing_cost_percentage             Float?
+  points_percentage_of_loan_amount    Float?
+  points_amount                       Float?
+  origination_fee                     Int?
+  created_at                          DateTime?    @default(now())
+  updated_at                          DateTime?    @default(now())
+}
