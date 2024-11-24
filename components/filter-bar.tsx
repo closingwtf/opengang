@@ -70,9 +70,15 @@ export function FilterBar({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="Conventional">Conventional</SelectItem>
-            <SelectItem value="FHA">FHA</SelectItem>
-            <SelectItem value="VA">VA</SelectItem>
-            <SelectItem value="USDA">USDA</SelectItem>
+            <SelectItem value="FHA" disabled>
+              FHA
+            </SelectItem>
+            <SelectItem value="VA" disabled>
+              VA
+            </SelectItem>
+            <SelectItem value="USDA" disabled>
+              USDA
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -87,8 +93,12 @@ export function FilterBar({
             <SelectValue placeholder="Select loan term" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="15">15 Years</SelectItem>
-            <SelectItem value="20">20 Years</SelectItem>
+            <SelectItem value="15" disabled>
+              15 Years
+            </SelectItem>
+            <SelectItem value="20" disabled>
+              20 Years
+            </SelectItem>
             <SelectItem value="30">30 Years</SelectItem>
           </SelectContent>
         </Select>

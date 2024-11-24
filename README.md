@@ -1,6 +1,6 @@
 <div align="center">
   <h1 align="center">ClosingStats</h1>
-  <h3>Crowdsourced Anonymized Financial Data Analytics</h3>
+  <h3>Crowdsourced Anonymized Mortgage Closing Data Analytics</h3>
 </div>
 
 

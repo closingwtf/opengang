@@ -7,18 +7,21 @@ import "./globals.css";
 import "./prism.css";
 
 export const metadata: Metadata = {
-  title: "ClosingStats - Crowdsourced Anonymized Financial Data Analytics",
+  title:
+    "ClosingStats - Crowdsourced Anonymized Mortgage Closing Data Analytics",
   description:
     "ClosingStats is an open source project for sharing useful data anonymously for the betterment of everyone. The project easily allows for the processing, structuing, evaluation, aggregation, and dashboarding of financial documents, helping consumers make informed decisions through collective intelligence.",
   openGraph: {
-    title: "ClosingStats - Crowdsourced Anonymized Financial Data Analytics",
+    title:
+      "ClosingStats - Crowdsourced Anonymized Mortgage Closing Data Analytics",
     description:
       "An open source Glassdoor for Financial Data with document processing, privacy-first anonymization, analytics and data visualization.",
     images: ["https://placehold.co/1200x400"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ClosingStats - Crowdsourced Anonymized Financial Data Analytics",
+    title:
+      "ClosingStats - Crowdsourced Anonymized Mortgage Closing Data Analytics",
     description:
       "An open source Glassdoor for Financial Data with document processing, privacy-first anonymization, analytics and data visualization.",
     images: ["https://placehold.co/1200x400"],

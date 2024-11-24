@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     schema: loanEstimateSchema,
   });
 
-  
+
   const pdf_data = result?.object;
 
 
@@ -51,6 +51,9 @@ export async function POST(req: Request) {
 
   const downpayment_percentage = (pdf_data?.calculating_cash_to_close.down_payment_funds_from_borrower / pdf_data?.loan_summary.sale_price) * 100;
   const closing_cost_percentage = (pdf_data?.calculating_cash_to_close.total_closing_costs / pdf_data?.loan_summary.sale_price) * 100;
+  const lender_credits_percentage = (pdf_data?.calculating_cash_to_close.lender_credits / pdf_data?.loan_summary.sale_price) * 100;
+  const seller_credits_percentage = (pdf_data?.calculating_cash_to_close.seller_credits / pdf_data?.loan_summary.sale_price) * 100;
+  
   await prisma.stats_mortgage_doc_upload.create({
     data: {
       id: crypto.randomUUID(),
@@ -68,6 +71,8 @@ export async function POST(req: Request) {
       loan_purpose: pdf_data?.loan_summary.purpose,
       loan_type: pdf_data?.loan_summary.product,
       total_closing_costs: pdf_data?.calculating_cash_to_close.total_closing_costs,
+      lender_credits_percentage,
+      seller_credits_percentage,  
       closing_cost_percentage: closing_cost_percentage
     }
   })

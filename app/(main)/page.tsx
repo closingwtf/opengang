@@ -13,9 +13,10 @@ export default async function Home() {
       <div className="absolute inset-0 h-full w-full overflow-hidden ">
         <Background />
       </div>
-      <Container className="flex min-h-screen flex-col items-center justify-between mb-12">
+      <Container className="flex flex-col items-center justify-between mb-12">
         <Hero />
         <MortgageDataDashboard stats={stats as unknown as Stat[]} />
+        {/* <ScrollableCharts /> */}
       </Container>
     </div>
   );

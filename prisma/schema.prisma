@@ -31,6 +31,8 @@ model stats_mortgage_doc_upload {
   points_percentage_of_loan_amount    Float?
   points_amount                       Float?
   origination_fee                     Int?
+  lender_credits_percentage           Float?
+  seller_credits_percentage           Float?
   created_at                          DateTime?    @default(now())
   updated_at                          DateTime?    @default(now())
 }

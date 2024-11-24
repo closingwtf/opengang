@@ -81,6 +81,7 @@ export const loanEstimateSchema = z.object({
       down_payment_funds_from_borrower: z.number(),
       deposit: z.number(),
       funds_for_borrower: z.number(),
+      lender_credits: z.number(),
       seller_credits: z.number(),
       estimated_cash_to_close: z.number(),
     }),
@@ -116,4 +117,7 @@ export type Stat = {
   closing_cost_percentage: number;
   points_percentage_of_loan_amount: number;
   points_amount: number;
+  origination_fee: number;
+  lender_credits: number;
+  seller_credits: number;
 };

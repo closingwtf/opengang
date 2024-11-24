@@ -71,10 +71,10 @@ export function ContributeAnonymouslyForm() {
               Contribute Your Loan Estimate Data Anonymously
             </h4>
             <p className="text-sm md:text-base text-center mb-8">
-              Looking to analyze your mortgage to not get screwed on closing
-              costs and bad rates? <br />{" "}
+              Want to analyze your mortgage to not get screwed on closing costs
+              and bad rates?{" "}
               <Link href="https://closing.wtf" target="_blank">
-                <Button variant={"link"} className="p-0">
+                <Button variant={"link"} className="p-0 underline">
                   Visit closing.wtf
                 </Button>
               </Link>

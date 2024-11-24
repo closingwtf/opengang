@@ -7,14 +7,12 @@ import { USAMap } from "@/components/usa-map";
 import { Stat } from "@/lib/schemas";
 import { statesList } from "@/lib/states-data";
 import { useState } from "react";
+import { StateClosingCostsTable } from "./state-closing-costs-table";
 
 export type LoanType = "Conventional" | "FHA" | "VA" | "USDA";
 export type LoanTerm = "15" | "20" | "30";
 
 export function MortgageDataDashboard({ stats }: { stats: Stat[] }) {
-  const [selectedState, setSelectedState] = useState<string | null>(null);
-  const [loanType, setLoanType] = useState<LoanType>("Conventional");
-  const [loanTerm, setLoanTerm] = useState<LoanTerm>("30");
   const available_states = statesList.reduce<{ name: string; code: string }[]>(
     (acc, state) => {
       if (stats.map((stat) => stat.state).includes(state.code)) {
@@ -24,25 +22,15 @@ export function MortgageDataDashboard({ stats }: { stats: Stat[] }) {
     },
     []
   );
+  const [selectedState, setSelectedState] = useState<string>(
+    available_states[0]?.name ?? null
+  );
+  const [loanType, setLoanType] = useState<LoanType>("Conventional");
+  const [loanTerm, setLoanTerm] = useState<LoanTerm>("30");
 
   return (
     <div className="space-y-6 mt-12 w-full">
       <Card className="p-6 bg-gray-300 backdrop-blur-sm dark:bg-gray-800/50">
-        <div className="mb-6 text-sm text-muted-foreground">
-          <p className="leading-relaxed text-sm text-gray-600 dark:text-gray-300">
-            This data is aggregated and anonymized from users who opted in to
-            share their mortgage details on{" "}
-            <a
-              href="https://closing.wtf"
-              className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors underline-offset-2 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              closing.wtf
-            </a>
-            . No personally identifiable information is aggregated or displayed.
-          </p>
-        </div>
         <div className="grid lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3">
             <div className="space-y-6">
@@ -77,12 +65,36 @@ export function MortgageDataDashboard({ stats }: { stats: Stat[] }) {
         </div>
       </Card>
 
-      {/* <Card className="p-6 bg-white/50 backdrop-blur-sm dark:bg-gray-800/50">
-        <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+      <Card className="p-6 bg-white/50 backdrop-blur-sm dark:bg-gray-800/50">
+        <StateClosingCostsTable
+          stats={stats as unknown as Stat[]}
+          state={selectedState}
+          loanType={loanType}
+          loanTerm={loanTerm}
+        />
+
+        {/* <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
           National Closing Costs Comparison
         </h3>
-        <StateDataChart stats={stats} />
-      </Card> */}
+        <StateDataChart stats={stats} /> */}
+      </Card>
+      <div className="mb-6 p-4 border-2 border-yellow-400 dark:border-yellow-600 rounded-lg bg-yellow-50 dark:bg-yellow-900/20">
+        <p className="leading-relaxed text-lg font-medium text-gray-700 dark:text-gray-200">
+          This data is aggregated and anonymized from users who opted in to
+          share their mortgage details on{" "}
+          <a
+            href="https://closing.wtf"
+            className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors underline-offset-2 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            closing.wtf
+          </a>
+          . Only events from the past year is are displayed. No personally
+          identifiable information is aggregated or displayed. Please take this
+          data with a grain of salt, the data sample is small.
+        </p>
+      </div>
     </div>
   );
 }
